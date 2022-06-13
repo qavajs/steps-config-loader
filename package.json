@@ -23,7 +23,7 @@
     "typescript": "^4.7.3"
   },
   "peerDependencies": {
-    "@yaatp/memory": "^1.0.0",
+    "@yaatp/memory": "^0.0.1",
     "@cucumber/cucumber": "^8.2.2"
   }
 }
