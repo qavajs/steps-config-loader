@@ -3,7 +3,7 @@ import path from 'path';
 import memory from '@yaatp/memory';
 
 declare global {
-    let config: any;
+    var config: any;
 }
 
 defineParameterType({
@@ -15,7 +15,7 @@ defineParameterType({
 Before(function () {
     const configPath = process.env.CONFIG as string;
     const profile = process.env.PROFILE as string;
-    config = require(path.join(process.cwd(), configPath))[profile];
+    global.config = require(path.join(process.cwd(), configPath))[profile];
 });
 
 Before(function () {
