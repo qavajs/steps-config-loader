@@ -1,21 +1,29 @@
 {
-  "name": "@cucumber-e2e/steps-config-loader",
-  "version": "1.0.0",
+  "name": "@yaatp/steps-config-loader",
+  "version": "0.0.1",
   "description": "config loader for @cucumber-e2e project",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "build-watch": "tsc -w"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexGalichenko/steps-config-loader.git"
   },
-  "author": "",
+  "authors": [
+    "Alexandr Galichenko"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AlexGalichenko/steps-config-loader/issues"
   },
   "homepage": "https://github.com/AlexGalichenko/steps-config-loader#readme",
-  "dependencies": {
-    "@cucumber-e2e/memory2": "^1.0.0",
-    "@cucumber/cucumber": "^8.2.2",
-    "yargs": "^17.5.1"
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "typescript": "^4.7.3"
+  },
+  "peerDependencies": {
+    "@yaatp/memory": "*",
+    "@cucumber/cucumber": "^8.2.2"
   }
 }
