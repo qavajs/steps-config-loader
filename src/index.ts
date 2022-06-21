@@ -1,6 +1,6 @@
 import { Before, After, defineParameterType } from '@cucumber/cucumber';
 import path from 'path';
-import memory from '@yaatp/memory';
+import memory from '@qavajs/memory';
 
 declare global {
     var config: any;

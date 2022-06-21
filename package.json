@@ -1,29 +1,26 @@
 {
-  "name": "@yaatp/steps-config-loader",
+  "name": "@qavajs/steps-config-loader",
   "version": "0.0.1",
-  "description": "config loader for @cucumber-e2e project",
+  "description": "config loader for @qavajs project",
   "scripts": {
-    "build": "tsc",
-    "build-watch": "tsc -w"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexGalichenko/steps-config-loader.git"
+    "url": "git+https://github.com/qavajs/steps-config-loader.git"
   },
   "authors": [
     "Alexandr Galichenko"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlexGalichenko/steps-config-loader/issues"
+    "url": "https://github.com/qavajs/steps-config-loader/issues"
   },
-  "homepage": "https://github.com/AlexGalichenko/steps-config-loader#readme",
+  "homepage": "https://github.com/qavajs/steps-config-loader#readme",
   "devDependencies": {
     "@types/node": "^17.0.42",
-    "typescript": "^4.7.3"
-  },
-  "peerDependencies": {
-    "@yaatp/memory": "*",
+    "typescript": "^4.7.3",
+    "@qavajs/memory": "^1.0.0",
     "@cucumber/cucumber": "^8.2.2"
   }
 }
