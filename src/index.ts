@@ -1,7 +1,7 @@
 import { Before, defineParameterType } from '@cucumber/cucumber';
 import path from 'path';
 import memory from '@qavajs/memory';
-import { compareValidationTransformer, memoryTransformer } from './parameterTypeTransformer';
+import { validationTransformer, memoryTransformer } from './parameterTypeTransformer';
 
 declare global {
     var config: any;
@@ -14,9 +14,9 @@ defineParameterType({
 });
 
 defineParameterType({
-    name: 'compareValidation',
+    name: 'validation',
     regexp: /(.+)/,
-    transformer: compareValidationTransformer
+    transformer: validationTransformer
 });
 
 Before(function () {
