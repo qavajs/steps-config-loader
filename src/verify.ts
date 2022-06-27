@@ -23,7 +23,7 @@ export function verify({AR, ER, validation, reverse}: VerifyInput) {
         case validations.EQUALS: expectClause.eql(ER); break;
         case validations.HAVE_MEMBERS: expectClause.have.members(ER); break;
         case validations.MATCHES:
-        case validations.MATCH: expectClause.match(ER); break;
+        case validations.MATCH: expectClause.match(ER instanceof RegExp ? ER : new RegExp(ER)); break;
         case validations.CONTAINS:
         case validations.CONTAIN: expectClause.contain(ER); break;
         default: throw new Error(`validation '${validation}' is not supported`);
