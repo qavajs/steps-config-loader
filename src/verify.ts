@@ -17,6 +17,11 @@ type VerifyInput = {
   reverse: boolean;
 };
 
+/**
+ * Basic verification function
+ * 
+ * @param {VerifyInput} object with all needed data for validation 
+ */
 export function verify({ AR, ER, validation, reverse }: VerifyInput): void | Error {
   const expectClause = reverse ? expect(AR).to.not : expect(AR).to;
   switch (validation) {
