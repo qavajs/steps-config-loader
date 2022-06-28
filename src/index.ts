@@ -1,27 +1,28 @@
 import { Before, defineParameterType } from '@cucumber/cucumber';
 import path from 'path';
 import memory from '@qavajs/memory';
-import { validationTransformer, memoryTransformer } from './parameterTypeTransformer';
+import { validationTransformer, memoryTransformer } from '@parameterTypeTransformer';
 
 declare global {
-    var config: any;
+  // eslint-disable-next-line no-var
+  var config: any;
 }
 
 defineParameterType({
-    name: 'text',
-    regexp: /'(.+)'/,
-    transformer: memoryTransformer
+  name: 'text',
+  regexp: /'(.+)'/,
+  transformer: memoryTransformer,
 });
 
 defineParameterType({
-    name: 'validation',
-    regexp: /(.+)/,
-    transformer: validationTransformer
+  name: 'validation',
+  regexp: /(.+)/,
+  transformer: validationTransformer,
 });
 
-Before(function () {
-    const configPath = process.env.CONFIG as string;
-    const profile = process.env.PROFILE as string;
-    global.config = require(path.join(process.cwd(), configPath))[profile];
-    memory.register(config.memory ?? {});
+Before(async function () {
+  const configPath = process.env.CONFIG as string;
+  const profile = process.env.PROFILE as string;
+  global.config = (await import(path.join(process.cwd(), configPath)))[profile];
+  memory.register(config.memory ?? {});
 });
