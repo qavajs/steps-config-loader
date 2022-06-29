@@ -1,6 +1,6 @@
 {
   "include": [
-    "./**/*"
+    "./src/**/*"
   ],
   "exclude": [
     "test/**/*.spec.ts",
@@ -8,8 +8,8 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "baseUrl": ".", 
-    "target": "esnext",
+    "baseUrl": ".",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "./lib",

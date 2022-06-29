@@ -1,11 +1,11 @@
 import { defineParameterType } from '@cucumber/cucumber';
-import memory from '@qavajs/memory';
-
-defineParameterType({
-  name: 'memory',
-  regexp: /'(.+)'/,
-  transformer: (p: string) => memory.getValue(p),
-});
+import {
+  memoryTransformer,
+  validationTransformer,
+  waitTransformer,
+  aliasTransformer,
+  lazyAliasTransformer
+} from './parameterTypeTransformer';
 
 /**
  * Used for returning key code by key name
@@ -51,18 +51,40 @@ defineParameterType({
 });
 
 /**
- * Used to compare numbers
+ * Parameter type for parsing data from the memory or providing simple data to the step definition
  */
 defineParameterType({
-  regexp: /equal|below|above/,
-  transformer(condition: string) {
-    const CONDITIONS: any = {
-      equal: 'equal',
-      below: 'isBelow',
-      above: 'isAbove',
-    };
-    return CONDITIONS[condition];
-  },
-  name: 'numberComparison',
-  useForSnippets: false,
+  name: 'text',
+  regexp: /'(.+)'/,
+  transformer: memoryTransformer,
+});
+
+/**
+ * Parameter type for basic validations
+ */
+defineParameterType({
+  name: 'validation',
+  regexp: /(.+)/,
+  transformer: validationTransformer,
+});
+
+/**
+ * Parameter type to handle waits
+ */
+defineParameterType({
+  name: 'wait',
+  regexp: /(.+)/,
+  transformer: waitTransformer
+});
+
+defineParameterType({
+  name: 'element',
+  regexp: /'(.+)'/,
+  transformer: aliasTransformer
+});
+
+defineParameterType({
+  name: 'lazyElement',
+  regexp: /'(.+)'/,
+  transformer: lazyAliasTransformer
 });
