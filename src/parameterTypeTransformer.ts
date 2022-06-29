@@ -7,8 +7,8 @@ export interface TransformerType {
 
 /**
  * Transformer of all validations
- * 
- * @param p 
+ *
+ * @param p
  * @returns function with verify inside
  */
 export function validationTransformer(p: string): TransformerType {
@@ -21,8 +21,8 @@ export function validationTransformer(p: string): TransformerType {
 
 /**
  * Parsing data from the memory
- * 
- * @param p 
+ *
+ * @param p
  * @returns value from the memory, could be anything
  */
 export function memoryTransformer(p: string): any {
