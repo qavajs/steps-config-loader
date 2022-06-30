@@ -1,10 +1,22 @@
 import { defineParameterType } from '@cucumber/cucumber';
-import memory from '@qavajs/memory';
+import { memoryTransformer, validationTransformer } from '@parameterTypeTransformer';
 
+/**
+ * Parameter type for parsing data from the memory or providing simple data to the step definition
+ */
 defineParameterType({
-  name: 'memory',
+  name: 'text',
   regexp: /'(.+)'/,
-  transformer: (p: string) => memory.getValue(p),
+  transformer: memoryTransformer,
+});
+
+/**
+ * Parameter type for basic validations
+ */
+defineParameterType({
+  name: 'validation',
+  regexp: /(.+)/,
+  transformer: validationTransformer,
 });
 
 /**

@@ -3,7 +3,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "test/**/*.spec.ts",
+    "test",
     "lib",
     "node_modules"
   ],

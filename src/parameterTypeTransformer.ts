@@ -12,8 +12,8 @@ export interface TransformerType {
  * @returns function with verify inside
  */
 export function validationTransformer(p: string): TransformerType {
-  const regexp = /(does not )?(.+)s?/;
-  const [_, reverse, validation] = p.match(regexp) as RegExpMatchArray;
+  const regexp = /(?<reverse>does not |not |to not )?(?:to )?(?:be )?((?<validation>.+?)(s|es)?)$/;
+  const { reverse, validation } = p.match(regexp)?.groups as { reverse: string; validation: string };
   return function (AR: any, ER: any) {
     verify({ AR, ER, validation, reverse: Boolean(reverse) });
   };
