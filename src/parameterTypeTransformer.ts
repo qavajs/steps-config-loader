@@ -1,5 +1,5 @@
 import memory from '@qavajs/memory';
-import { verify } from '@verify';
+import { verify } from './verify';
 
 export interface TransformerType {
   (AR: any, ER: any): void;

@@ -1,7 +1,7 @@
 import { Before, defineParameterType } from '@cucumber/cucumber';
 import path from 'path';
 import memory from '@qavajs/memory';
-import { validationTransformer, memoryTransformer } from '@parameterTypeTransformer';
+import { validationTransformer, memoryTransformer } from './parameterTypeTransformer';
 
 declare global {
   // eslint-disable-next-line no-var
