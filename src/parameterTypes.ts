@@ -1,5 +1,5 @@
 import { defineParameterType } from '@cucumber/cucumber';
-import { memoryTransformer, validationTransformer } from '@parameterTypeTransformer';
+import { memoryTransformer, validationTransformer } from './parameterTypeTransformer';
 
 /**
  * Parameter type for parsing data from the memory or providing simple data to the step definition
