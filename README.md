@@ -12,3 +12,12 @@ module.exports = {
     }
 }
 ```
+
+This lib comes with built-in {validation} type which resolves to function performing validation.
+Implemented validations
+* equal
+* contain
+* have members
+* match
+* to be above
+* to be below

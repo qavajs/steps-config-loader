@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/steps-config-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "config loader for @qavajs project",
   "scripts": {
     "build": "tsc",
