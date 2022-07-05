@@ -9,6 +9,7 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-restricted-syntax": 0,
     "no-await-in-loop": "off",
     "import/extensions": "off",

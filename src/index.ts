@@ -1,4 +1,4 @@
-import { Before, defineParameterType } from '@cucumber/cucumber';
+import { Before } from '@cucumber/cucumber';
 import path from 'path';
 import memory from '@qavajs/memory';
 
