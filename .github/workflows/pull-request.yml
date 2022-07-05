@@ -1,7 +1,6 @@
 name: Test
 
 on:
-  push:
   pull_request:
     branches:
       - master
@@ -15,4 +14,5 @@ jobs:
         with:
           node-version: 16
       - run: npm ci
+      - run: npm run build
       - run: npm run test
