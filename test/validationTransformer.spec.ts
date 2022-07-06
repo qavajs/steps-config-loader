@@ -111,6 +111,30 @@ const tests: Array<TestParams> = [
     negativeArgs: [1, 2],
     expectedError: 'expected 1 to be at least 2',
   },
+  {
+    validation: 'to be greater than',
+    positiveArgs: [2, 1],
+    negativeArgs: [1, 2],
+    expectedError: 'expected 1 to be above 2',
+  },
+  {
+    validation: 'is not greater than',
+    positiveArgs: [2, 2],
+    negativeArgs: [2, 1],
+    expectedError: 'expected 2 to be at most 1',
+  },
+  {
+    validation: 'to be less than',
+    positiveArgs: [1, 2],
+    negativeArgs: [2, 1],
+    expectedError: 'expected 2 to be below 1',
+  },
+  {
+    validation: 'not to be less than',
+    positiveArgs: [1, 1],
+    negativeArgs: [1, 2],
+    expectedError: 'expected 1 to be at least 2',
+  },
 ];
 
 test.each(tests)('$validation', ({ validation, positiveArgs, negativeArgs, expectedError }: TestParams) => {
@@ -122,7 +146,6 @@ test.each(tests)('$validation', ({ validation, positiveArgs, negativeArgs, expec
 });
 
 test('should throw an error if validation is not supported', () => {
-  const verify = validationTransformer('to be cool');
-  const catcher = () => verify(1, 1);
-  expect(catcher).to.throw("validation 'cool' is not supported");
+  const catcher = () => validationTransformer('to be cool');
+  expect(catcher).to.throw("validation 'to be cool' is not supported");
 });
