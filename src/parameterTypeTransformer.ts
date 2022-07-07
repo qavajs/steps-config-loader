@@ -1,9 +1,7 @@
 import memory from '@qavajs/memory';
 import { verify } from './verify';
 
-export interface TransformerType {
-  (AR: any, ER: any): void;
-}
+export type TransformerType = (AR: any, ER: any) => void;
 
 /**
  * Transformer of all validations

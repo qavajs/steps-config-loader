@@ -46,6 +46,12 @@ const tests: Array<TestParams> = [
     expectedError: "'expression' to match /^espresso$/",
   },
   {
+    validation: 'to match',
+    positiveArgs: ['expression', /^expression$/],
+    negativeArgs: ['expression', /^espresso$/],
+    expectedError: "'expression' to match /^espresso$/",
+  },
+  {
     validation: 'does not match',
     positiveArgs: ['expression', '^espresso$'],
     negativeArgs: ['expression', '^expression$'],
@@ -113,4 +119,10 @@ test.each(tests)('$validation', ({ validation, positiveArgs, negativeArgs, expec
   const catcherNegative = () => verify(...negativeArgs);
   expect(catcherPositive).to.not.throw();
   expect(catcherNegative).to.throw(expectedError);
+});
+
+test('should throw an error if validation is not supported', () => {
+  const verify = validationTransformer('to be cool');
+  const catcher = () => verify(1, 1);
+  expect(catcher).to.throw("validation 'cool' is not supported");
 });
