@@ -8,6 +8,7 @@ defineParameterType({
   name: 'text',
   regexp: /'(.+)'/,
   transformer: memoryTransformer,
+  useForSnippets: false
 });
 
 /**
@@ -17,6 +18,7 @@ defineParameterType({
   name: 'validation',
   regexp: validationRegexp,
   transformer: validationTransformer,
+  useForSnippets: false
 });
 
 /**
