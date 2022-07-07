@@ -7,7 +7,17 @@ export const validations = {
   CONTAIN: 'contain',
   ABOVE: 'above',
   BELOW: 'below',
+  GREATER: 'greater than',
+  LESS: 'less than',
 };
+
+const isClause = '(?:is |do |does |to )?';
+const notClause = '(not |to not )?';
+const toBeClause = '(?:to )?(?:be )?';
+const validationClause = `(?:(${Object.values(validations).join('|')})(?:s|es)?)`;
+
+export const validationExtractRegexp = new RegExp(`^${isClause}${notClause}${toBeClause}${validationClause}$`);
+export const validationRegexp = new RegExp(`(${isClause}${notClause}${toBeClause}${validationClause})`);
 
 type VerifyInput = {
   AR: any;
@@ -16,13 +26,17 @@ type VerifyInput = {
   reverse: boolean;
 };
 
+const aboveFn = (expectClause: any, ER: any) => expectClause.above(ER);
+const belowFn = (expectClause: any, ER: any) => expectClause.below(ER);
 const validationFns = {
   [validations.EQUAL]: (expectClause: any, ER: any) => expectClause.eql(ER),
   [validations.HAVE_MEMBERS]: (expectClause: any, ER: any) => expectClause.have.members(ER),
   [validations.MATCH]: (expectClause: any, ER: any) => expectClause.match(ER instanceof RegExp ? ER : new RegExp(ER)),
   [validations.CONTAIN]: (expectClause: any, ER: any) => expectClause.contain(ER),
-  [validations.ABOVE]: (expectClause: any, ER: any) => expectClause.above(ER),
-  [validations.BELOW]: (expectClause: any, ER: any) => expectClause.below(ER),
+  [validations.ABOVE]: aboveFn,
+  [validations.BELOW]: belowFn,
+  [validations.GREATER]: aboveFn,
+  [validations.LESS]: belowFn,
 };
 
 /**
@@ -32,6 +46,5 @@ const validationFns = {
 export function verify({ AR, ER, validation, reverse }: VerifyInput): void | Error {
   const expectClause = reverse ? expect(AR).to.not : expect(AR).to;
   const validate = validationFns[validation];
-  if (!validate) throw new Error(`validation '${validation}' is not supported`);
   validate(expectClause, ER);
 }

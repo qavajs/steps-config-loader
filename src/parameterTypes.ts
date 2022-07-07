@@ -1,6 +1,6 @@
 import { defineParameterType } from '@cucumber/cucumber';
 import { memoryTransformer, validationTransformer } from './parameterTypeTransformer';
-
+import { validationRegexp } from './verify';
 /**
  * Parameter type for parsing data from the memory or providing simple data to the step definition
  */
@@ -8,6 +8,7 @@ defineParameterType({
   name: 'text',
   regexp: /'(.+)'/,
   transformer: memoryTransformer,
+  useForSnippets: false,
 });
 
 /**
@@ -15,8 +16,9 @@ defineParameterType({
  */
 defineParameterType({
   name: 'validation',
-  regexp: /(.+)/,
+  regexp: validationRegexp,
   transformer: validationTransformer,
+  useForSnippets: false,
 });
 
 /**

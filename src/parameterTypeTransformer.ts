@@ -1,17 +1,17 @@
 import memory from '@qavajs/memory';
-import { verify } from './verify';
+import { verify, validationExtractRegexp } from './verify';
 
 export type TransformerType = (AR: any, ER: any) => void;
 
 /**
  * Transformer of all validations
- *
- * @param p
- * @returns function with verify inside
+ * @param validationType - string to be resolved
+ * @returns verify function
  */
-export function validationTransformer(p: string): TransformerType {
-  const regexp = /(?<reverse>does not |not |to not )?(?:to )?(?:be )?((?<validation>.+?)(s|es)?)$/;
-  const { reverse, validation } = p.match(regexp)?.groups as { reverse: string; validation: string };
+export function validationTransformer(validationType: string): TransformerType {
+  const match = validationType.match(validationExtractRegexp) as RegExpMatchArray;
+  if (!match) throw new Error(`validation '${validationType}' is not supported`);
+  const [_, reverse, validation] = match;
   return function (AR: any, ER: any) {
     verify({ AR, ER, validation, reverse: Boolean(reverse) });
   };
@@ -20,9 +20,9 @@ export function validationTransformer(p: string): TransformerType {
 /**
  * Parsing data from the memory
  *
- * @param p
+ * @param alias - memory alias or plain value
  * @returns value from the memory, could be anything
  */
-export function memoryTransformer(p: string): any {
-  return memory.getValue(p);
+export function memoryTransformer(alias: string): any {
+  return memory.getValue(alias);
 }
