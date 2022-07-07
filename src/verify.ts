@@ -27,7 +27,7 @@ type VerifyInput = {
 };
 
 const aboveFn = (expectClause: any, ER: any) => expectClause.above(ER);
-const belowFn = (expectClause: any, ER: any) => expectClause.below(ER)
+const belowFn = (expectClause: any, ER: any) => expectClause.below(ER);
 const validationFns = {
   [validations.EQUAL]: (expectClause: any, ER: any) => expectClause.eql(ER),
   [validations.HAVE_MEMBERS]: (expectClause: any, ER: any) => expectClause.have.members(ER),
