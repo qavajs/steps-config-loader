@@ -21,3 +21,4 @@ Implemented validations
 * match
 * to be above
 * to be below
+* have type
