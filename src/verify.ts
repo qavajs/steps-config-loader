@@ -9,6 +9,7 @@ export const validations = {
   BELOW: 'below',
   GREATER: 'greater than',
   LESS: 'less than',
+  HAVE_TYPE: 'have type',
 };
 
 const isClause = '(?:is |do |does |to )?';
@@ -37,6 +38,7 @@ const validationFns = {
   [validations.BELOW]: belowFn,
   [validations.GREATER]: aboveFn,
   [validations.LESS]: belowFn,
+  [validations.HAVE_TYPE]: (expectClause: any, ER: string) => expectClause.a(ER),
 };
 
 /**

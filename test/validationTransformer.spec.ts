@@ -135,6 +135,19 @@ const tests: Array<TestParams> = [
     negativeArgs: [1, 2],
     expectedError: 'expected 1 to be at least 2',
   },
+  {
+    validation: 'to have type',
+    positiveArgs: [1, 'number'],
+    negativeArgs: [1, 'string'],
+    expectedError: 'expected 1 to be a string',
+  },
+
+  {
+    validation: 'not to have type',
+    positiveArgs: [{}, 'string'],
+    negativeArgs: [{}, 'object'],
+    expectedError: 'expected {} not to be an object',
+  },
 ];
 
 test.each(tests)('$validation', ({ validation, positiveArgs, negativeArgs, expectedError }: TestParams) => {
